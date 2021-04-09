@@ -1,0 +1,11 @@
+[workspace]
+
+members = [
+    "eplus",
+    "positron",
+    "positron_build"
+]
+
+default-members = [
+    "eplus"
+]
