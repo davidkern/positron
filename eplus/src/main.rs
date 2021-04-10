@@ -9,7 +9,10 @@ fn main() {
     let tool = Tool::new()
         .name("e+")
         .help("Positron Project CLI")
-        .tool(crate::update::tool());
+        .subtool(crate::update::tool())
+        .func(|t| {
+            println!("run {}", t.name);
+        });
 
-    CommandLineInterface::main(tool)
+    CommandLineInterface::run(&tool)
 }
