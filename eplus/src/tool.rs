@@ -1,11 +1,11 @@
-pub struct Tool {
+pub struct ToolBuilder {
     pub name: String,
     pub help: String,
-    pub subtools: Vec<Self>,
-    pub func: Box<dyn Fn(&Self)>,
+    pub subtools: Vec<ToolBuilder>,
+    pub func: Box<dyn Fn(&Tool)>,
 }
 
-impl Tool {
+impl ToolBuilder {
     pub fn new() -> Self {
         Self {
             name: String::new(),
@@ -30,8 +30,30 @@ impl Tool {
         self
     }
 
-    pub fn func<F: Fn(&Self) + 'static>(mut self, func: F) -> Self {
+    pub fn func<F: Fn(&Tool) + 'static>(mut self, func: F) -> Self {
         self.func = Box::new(func);
         self
     }
+
+    pub fn build(mut self) -> Tool {
+        let mut tool = Tool {
+            name: self.name,
+            help: self.help,
+            subtools: Vec::with_capacity(self.subtools.len()),
+            func: self.func,
+        };
+
+        for subtool in self.subtools.drain(..) {
+           tool.subtools.push(subtool.build());
+        }
+
+        tool
+    }
+}
+
+pub struct Tool {
+    pub name: String,
+    pub help: String,
+    pub subtools: Vec<Self>,
+    pub func: Box<dyn Fn(&Self)>,
 }

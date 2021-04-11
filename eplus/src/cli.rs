@@ -1,4 +1,4 @@
-use crate::Tool;
+use crate::tool::Tool;
 
 use clap::{App, ArgMatches};
 

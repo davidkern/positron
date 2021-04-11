@@ -1,8 +1,8 @@
 use clap::{App, SubCommand};
-use crate::Tool;
+use crate::ToolBuilder;
 
-pub fn tool() -> Tool {
-    Tool::new()
+pub fn tool() -> ToolBuilder {
+    ToolBuilder::new()
         .name("update")
         .help("Updates runtime components")
         .func(|t| {
