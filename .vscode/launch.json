@@ -1,0 +1,101 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'eplus'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=eplus",
+                    "--package=eplus"
+                ],
+                "filter": {
+                    "name": "eplus",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'eplus'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=eplus",
+                    "--package=eplus"
+                ],
+                "filter": {
+                    "name": "eplus",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'positron_build'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=positron_build"
+                ],
+                "filter": {
+                    "name": "positron_build",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'positron'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=positron",
+                    "--package=positron"
+                ],
+                "filter": {
+                    "name": "positron",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'positron'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=positron",
+                    "--package=positron"
+                ],
+                "filter": {
+                    "name": "positron",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
